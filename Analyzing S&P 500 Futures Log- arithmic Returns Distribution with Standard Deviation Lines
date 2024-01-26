@@ -6,4 +6,12 @@ import yfinance as yf
 sp500_futures = yf.download(’ES=F’)
 # Calculate the daily logarithmic returns of the futures prices.
 sp500_futures[’Log_Returns’] = np.log(sp500_futures[’Adj Close’] / sp500_futures[’Adj Close’].shift(1))
+annualized_return = sp500_futures[’Log_Returns’].mean() * 252
+print("annualized_return:", annualized_return)
+std_return = sp500_futures[’Log_Returns’].std()
+# Adding vertical lines for mean and standard deviations
+plt.axvline(mean_return , color=’black’, linestyle=’dashed’ , linewidth=2, label="Mean Return")
+for i in range(1, 4):
+plt.axvline(mean_return + i * std_return , color=’green ’, linestyle=’dashed’, linewidth=1, label=f"+{i} STD")
+plt.axvline(mean_return - i * std_return , color=’red’, linestyle=’dashed’, linewidth=1, label=f"-{i} STD")
 
