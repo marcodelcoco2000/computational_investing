@@ -13,3 +13,17 @@ plt.ylabel(’Returns’)
 plt.legend()
 plt.grid(True)
 plt.show()
+# CALCULATE AND PLOT CUMULATIVE RETURNS
+# Calculating cumulative returns
+cumulative_arithmetic_return = np.cumsum(arithmetic_returns)
+cumulative_logarithmic_return = np.exp(np.cumsum(log_returns)) - 1
+# Plotting cumulative returns
+plt.figure(figsize=(10, 6))
+plt.plot(cumulative_arithmetic_return ,Returns’,label="cumulative arithmetic returns", marker=’o’)
+plt.plot(cumulative_logarithmic_return ,Logarithmic Returns’, label="cumulative logarithmic returns", marker=’x’)
+plt.title(’Cumulative Arithmetic vs. Logarithmic Returns’)
+plt.xlabel(’Year’)
+plt.ylabel(’Cumulative Returns’)
+plt.legend()
+plt.grid(True)
+plt.show()
